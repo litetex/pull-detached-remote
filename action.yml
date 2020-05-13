@@ -1,0 +1,6 @@
+name: 'Pull Detached Remote'
+description: 'Creates an detached upstream branch and a corresponding PR from another repo and updates it automatically'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  
