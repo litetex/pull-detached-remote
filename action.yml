@@ -3,4 +3,6 @@ description: 'Creates an detached upstream branch and a corresponding PR from an
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  
+branding:
+  icon: 'arrow-down-circle'  
+  color: 'yellow'
