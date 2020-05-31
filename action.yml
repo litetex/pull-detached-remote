@@ -28,6 +28,7 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
+  - '--expectescapedinput'
   - '--identitymail "${{ inputs.identitymail }}"'
   - '--identityuser "${{ inputs.identityuser }}"'
   - '--workingrepopath "/github/workspace"'
