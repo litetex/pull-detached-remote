@@ -1,1 +1,1 @@
-FROM litetex/pulldetachedremote:master-602ffed15a617eb740898de6a637a150c16ed1c3
+FROM litetex/pulldetachedremote:develop
