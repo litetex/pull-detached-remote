@@ -9,6 +9,10 @@ inputs:
   identityuser:
     description: 'Username for commits to the upstream branch'
     required: false
+  workingrepopath:
+    description: 'Path to working repo'
+    required: false
+    default: '/github/workspace'
   originbranch:
     description: 'The branch(name) to merge the PR into; default is Github-Repos default-Branch'
     required: false
@@ -33,7 +37,7 @@ runs:
   - '--identityuser'
   - '${{ inputs.identityuser }}'
   - '--workingrepopath'
-  - $GITHUB_WORKSPACE
+  - '${{ inputs.workingrepopath }}'
   - '--originbranch'
   - '${{ inputs.originbranch }}'
   - '--upstreamrepo'
