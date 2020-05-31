@@ -1,8 +1,46 @@
 name: 'Pull Detached Remote'
-description: 'Creates an detached upstream branch and a corresponding PR from another repo and updates it automatically'
+description: 'Creates a detached upstream branch (from another repo) and a corresponding PR and updates it automatically'
+author: 'litetex'
+inputs:
+  identitymail:
+    description: 'Email for commits to the upstream branch'
+    required: false
+    default: 'action@github.com'
+  identityuser:
+    description: 'Username for commits to the upstream branch'
+    required: false
+    #todo on not there do not set
+  originbranch:
+    description: 'The branch(name) to merge the PR into; default is Github-Repos default-Branch'
+    required: false
+    #todo on not there do not set
+  upstreamrepo:
+    description: 'Detached remote repository that should be used'
+    required: true
+  upstreambranch:
+    description: 'Detached remote branch that should be used; WARNING: It's recommend to set this branch, otherwise the process may be inperformant'
+    required: false
+    #todo on not there do not set
+  nameoforiginupdatebranch:
+    description: 'Name of the branch that will be created in the origin-Repo with the changes from upstream-Repo/upstream-Branch; default is a auto generated name from the upstreamRepo + Branch'
+    required: false
+    #todo on not there do not set
+  upstreamrepousegithubcreds:
+    description: 'if true uses GitHubToken for the upstream-Repo; default value is true; Valid inputs are true/false or 0/1'
+    required: false
+    #todo on not there do not set
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args:
+  - '--identitymail "${{ inputs.identitymail }}"'
+  - '--identityuser "${{ inputs.identityuser }}"'
+  - '--workingrepopath "/github/workspace"'
+  - '--originbranch "${{ inputs.originbranch }}"'
+  - '--upstreamrepo "${{ inputs.upstreamrepo }}"'
+  - '--upstreambranch "${{ inputs.upstreambranch }}"'
+  - '--nameoforiginupdatebranch "${{ inputs.nameoforiginupdatebranch }}"'
+  - '--upstreamrepousegithubcreds "${{ inputs.upstreamrepousegithubcreds }}"'
 branding:
-  icon: 'arrow-down-circle'  
+  icon: 'zap'  
   color: 'yellow'
