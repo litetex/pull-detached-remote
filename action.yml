@@ -33,7 +33,7 @@ runs:
   - '--identityuser'
   - '${{ inputs.identityuser }}'
   - '--workingrepopath'
-  - '/github/workspace'
+  - '$GITHUB_WORKSPACE'
   - '--originbranch'
   - '${{ inputs.originbranch }}'
   - '--upstreamrepo'
