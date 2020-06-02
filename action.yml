@@ -1,0 +1,53 @@
+name: 'Pull Detached Remote'
+description: 'Creates a detached upstream branch (from another repo) and a corresponding PR and updates it automatically'
+author: 'litetex'
+inputs:
+  identitymail:
+    description: 'Email for commits to the upstream branch'
+    required: false
+    default: 'action@github.com'
+  identityuser:
+    description: 'Username for commits to the upstream branch'
+    required: false
+  workingrepopath:
+    description: 'Path to working repo'
+    required: false
+    default: '/github/workspace'
+  originbranch:
+    description: 'The branch(name) to merge the PR into; default is Github-Repos default-Branch'
+    required: false
+  upstreamrepo:
+    description: 'Detached remote repository that should be used'
+    required: true
+  upstreambranch:
+    description: 'Detached remote branch that should be used; WARNING: It is recommend to set this branch, otherwise the process may be inperformant'
+    required: false
+  nameoforiginupdatebranch:
+    description: 'Name of the branch that will be created in the origin-Repo with the changes from upstream-Repo/upstream-Branch; default is a auto generated name from the upstreamRepo + Branch'
+    required: false
+  upstreamrepousegithubcreds:
+    description: 'if true uses GitHubToken for the upstream-Repo; default value is true; Valid inputs are true/false or 0/1'
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+  - '--identitymail'
+  - '${{ inputs.identitymail }}'
+  - '--identityuser'
+  - '${{ inputs.identityuser }}'
+  - '--workingrepopath'
+  - '${{ inputs.workingrepopath }}'
+  - '--originbranch'
+  - '${{ inputs.originbranch }}'
+  - '--upstreamrepo'
+  - '${{ inputs.upstreamrepo }}'
+  - '--upstreambranch'
+  - '${{ inputs.upstreambranch }}'
+  - '--nameoforiginupdatebranch'
+  - '${{ inputs.nameoforiginupdatebranch }}'
+  - '--upstreamrepousegithubcreds'
+  - '${{ inputs.upstreamrepousegithubcreds }}'
+branding:
+  icon: 'zap'  
+  color: 'yellow'
