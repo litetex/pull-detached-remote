@@ -23,7 +23,7 @@ jobs:
       # Fetch the history and unshallow the checked out repo so that it can be used
       - name: Fetch all history for all tags and branches
         run: git fetch --prune --unshallow
-      # Pull the detached remote
+      # Pull the detached remote and do the magic
       - name: Pull Detached Remote
         uses: litetex/pull-detached-remote@vdev
         with:
