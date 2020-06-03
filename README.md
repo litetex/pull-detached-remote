@@ -30,6 +30,7 @@ jobs:
           upstreamrepo: https://github.com/<owner>/<repo>
           upstreambranch: an-update
         env:
-          # NOTE: This is a Personal Access Token, ${{ secrets.GITHUB_TOKEN }} has not enough permissions :(
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # NOTE: This is a Personal Access Token
+          GITHUB_PAT: ${{ secrets.GH_PAT }}
 ```
