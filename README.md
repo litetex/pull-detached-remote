@@ -38,9 +38,64 @@ jobs:
 ### Parameters
 → see [action.yml](action.yml)
 ### Environment-Variables
-| Variable | State |  Description | Notes |
-| ---- | -- | ---- | --- |
-| ``GITHUB_PAT`` | Required | A personal access token, that is used for git modifications of the targeted repo | This is the fallback if no ``GITHUB_TOKEN`` is set<br/><br/>Add it to the [secrets](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#creating-encrypted-secrets-for-a-repository)<br/><br/>[GitHub Documentation](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) |
-| ``GITHUB_TOKEN`` | Recommended | A token automatically created by GitHub for workflows on the current repo | If not set, the owner of the ``GITHUB_PAT`` will be the author of the pull request<br/><br/>[GitHub Documentation](https://help.github.com/en/actions/configuring-and-managing-workflows/authenticating-with-the-github_token#about-the-github_token-secret) |
-| ``DETACHED_CREDS_PRINCIPAL`` | Optional | Principal/Username (if you have a token, use it here and leave password blank) | Only required if a repository outside of GitHub has to be authenticated<br/><br/>Must be enabled with the parameter ``upstreamrepousegithubcreds=false`` |
-| ``DETACHED_CREDS_PW`` | Optional | Password | Only required if a repository outside of GitHub has to be authenticated<br/><br/>Must be enabled with the parameter ``upstreamrepousegithubcreds=false`` |
+<table>
+  <tr>
+    <th>Variable</th>
+    <th>State</th>
+    <th>Description</th>
+    <th>Notes</th>
+  </tr>
+  
+  <tr>
+    <td>GITHUB_PAT</td>
+    <td>Required</td>
+    <td>
+      A personal access token, that is used for git modifications of the targeted repo
+    </td>
+    <td>
+      This is the fallback if no GITHUB_TOKEN is set<br/>
+      <br/>
+      Add it to the <a href="https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#creating-encrypted-secrets-for-a-repository">secrets</a><br/>
+      <br/>
+      <a href="https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line">GitHub Documentation</a>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>GITHUB_TOKEN</td>
+    <td>Recommended</td>
+    <td>
+      A token automatically created by GitHub for workflows on the current repo
+    </td>
+    <td>
+      If not set, the owner of the GITHUB_PAT will be the author of the pull request<br/>
+      <br/>
+      <a href="https://help.github.com/en/actions/configuring-and-managing-workflows/authenticating-with-the-github_token#about-the-github_token-secret">GitHub Documentation</a>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>DETACHED_CREDS_PRINCIPAL</td>
+    <td>Optional</td>
+    <td>
+      Principal/Username (if you have a token, use it here and leave password blank)
+    </td>
+    <td rowspan=2>
+      Only required if a repository outside of GitHub has to be authenticated<br/>
+      <br/>
+      Only used if:<br/>
+      <ul>
+        <li>upstreamcredmode=AUTO (default), the repo is not from GitHub and DETACHED_CREDS_PRINCIPAL is set</li>
+        <li>upstreamcredmode=CUSTOM</li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td>DETACHED_CREDS_PW</td>
+    <td>Optional</td>
+    <td>
+      Password
+    </td>
+  </tr>
+</table>
