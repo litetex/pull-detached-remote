@@ -1,26 +1,25 @@
 # pull-detached-remote
 Action for [PullDetachedRemote](https://github.com/litetex/PullDetachedRemote)
 
-``UNDER DEVELOPMENT``
 
-Example usage:
-
+## Usage
+A simple worfklow example:
 ```YAML
 name: Pull detached upstream automatically from https://github.com/<owner>/<repo>
 
 on:
   schedule:
-    # Run every hour
-    - cron: '0 * * * *'
+    # Run this every day at 02:22 UTC
+    - cron: '22 2 * * *'
   
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout this repo
+      # Checkout the current repo
       - uses: actions/checkout@v2
-      # Fetch the history and unshallow the checked out repo so that it can be used
+      # Fetch the history and unshallow the repo so that it can be used
       - name: Fetch all history for all tags and branches
         run: git fetch --prune --unshallow
       # Pull the detached remote and do the magic
@@ -28,9 +27,20 @@ jobs:
         uses: litetex/pull-detached-remote@vdev
         with:
           upstreamrepo: https://github.com/<owner>/<repo>
-          upstreambranch: an-update
+          upstreambranch: <branchname>
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # NOTE: This is a Personal Access Token
           GITHUB_PAT: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
+
+## Inputs
+→ see also [Configuration.cs](https://github.com/litetex/PullDetachedRemote/blob/develop/PullDetachedRemote/Config/Configuration.cs)
+### Parameters
+→ see [action.yml](action.yml)
+### Environment-Variables
+| Variable | State |  Description | Notes |
+| ---- | -- | ---- | --- |
+| ``GITHUB_PAT`` | Required | A personal access token, that is used for git modifications of the targeted repo | This is the fallback if no ``GITHUB_TOKEN`` is set<br/><br/>Add it to the [secrets](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#creating-encrypted-secrets-for-a-repository)<br/><br/>[GitHub Documentation](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) |
+| ``GITHUB_TOKEN`` | Recommended | A token automatically created by GitHub for workflows on the current repo | If not set, the owner of the ``GITHUB_PAT`` will be the author of the pull request<br/><br/>[GitHub Documentation](https://help.github.com/en/actions/configuring-and-managing-workflows/authenticating-with-the-github_token#about-the-github_token-secret) |
+| ``DETACHED_CREDS_PRINCIPAL`` | Optional | Principal/Username (if you have a token, use it here and leave password blank) | Only required if a repository outside of GitHub has to be authenticated<br/><br/>Must be enabled with the parameter ``upstreamrepousegithubcreds=false`` |
+| ``DETACHED_CREDS_PW`` | Optional | Password | Only required if a repository outside of GitHub has to be authenticated<br/><br/>Must be enabled with the parameter ``upstreamrepousegithubcreds=false`` |
