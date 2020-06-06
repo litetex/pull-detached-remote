@@ -25,8 +25,8 @@ inputs:
   nameoforiginupdatebranch:
     description: 'Name of the branch that will be created in the origin-Repo with the changes from upstream-Repo/upstream-Branch; default is a auto generated name from the upstreamRepo + Branch'
     required: false
-  upstreamrepousegithubcreds:
-    description: 'if true uses GitHubToken for the upstream-Repo; default value is true; Valid inputs are true/false or 0/1'
+  upstreamcredmode:
+    description: 'Determines which credentials are used for authetification at upstreamrepo (or how they are determined / used); Valid inputs are AUTO (default/if not set), NONE, GITHUB or CUSTOM'
     required: false
 runs:
   using: 'docker'
@@ -46,8 +46,8 @@ runs:
   - '${{ inputs.upstreambranch }}'
   - '--nameoforiginupdatebranch'
   - '${{ inputs.nameoforiginupdatebranch }}'
-  - '--upstreamrepousegithubcreds'
-  - '${{ inputs.upstreamrepousegithubcreds }}'
+  - '--upstreamcredmode'
+  - '${{ inputs.upstreamcredmode }}'
 branding:
   icon: 'zap'  
   color: 'yellow'
