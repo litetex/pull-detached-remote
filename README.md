@@ -85,7 +85,8 @@ jobs:
       <br/>
       Only used if:<br/>
       <ul>
-        <li>upstreamcredmode=AUTO (default), the repo is not from GitHub and DETACHED_CREDS_PRINCIPAL is set</li>
+        <li>upstreamcredmode=AUTO (default)<br/>the upstream-repo is not hosted on GitHub and DETACHED_CREDS_PRINCIPAL is set
+        </li>
         <li>upstreamcredmode=CUSTOM</li>
       </ul>
     </td>
