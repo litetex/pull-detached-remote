@@ -10,13 +10,13 @@ inputs:
     description: 'Username for commits to the upstream branch'
     required: false
   prassignees:
-    description: 'Assignees (usernames) for the created pull request'
+    description: 'Assignees (usernames) for the created pull request (separated by ",")'
     required: false
   prreviewers:
-    description: 'Reviewers (usernames) for the created pull request'
+    description: 'Reviewers (usernames) for the created pull request (separated by ",")'
     required: false
   prlabels:
-    description: 'Labels for the created pull request'
+    description: 'Labels for the created pull request (separated by ",")'
     required: false
   workingrepopath:
     description: 'Path to working repo'
