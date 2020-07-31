@@ -9,6 +9,15 @@ inputs:
   identityuser:
     description: 'Username for commits to the upstream branch'
     required: false
+  prassignees:
+    description: 'Assignees (usernames) for the created pull request'
+    required: false
+  prreviewers:
+    description: 'Reviewers (usernames) for the created pull request'
+    required: false
+  prlabels:
+    description: 'Labels for the created pull request'
+    required: false
   workingrepopath:
     description: 'Path to working repo'
     required: false
@@ -36,6 +45,12 @@ runs:
   - '${{ inputs.identitymail }}'
   - '--identityuser'
   - '${{ inputs.identityuser }}'
+  - '--prassignees'
+  - '${{ inputs.prassignees }}'
+  - '--prreviewers'
+  - '${{ inputs.prreviewers }}'
+  - '--prlabels'
+  - '${{ inputs.prlabels }}'
   - '--workingrepopath'
   - '${{ inputs.workingrepopath }}'
   - '--originbranch'
