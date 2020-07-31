@@ -1,2 +1,1 @@
-ARG tag=develop
-FROM litetex/pulldetachedremote:${tag}
+FROM litetex/pulldetachedremote:develop
