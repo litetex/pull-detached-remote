@@ -1,7 +1,9 @@
 # pull-detached-remote
 Creates a branch with updates from a detached (not actively set) upstream of a repo and a corresponding PullRequest
 
-## What?
+If you don't understand the quick summary read the following:
+
+## Why?
 This action was mainly created for the following use-case:
 
 You have a GitHub repo that is not directly linked via an [upstream-remote](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/configuring-a-remote-for-a-fork)
