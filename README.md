@@ -1,6 +1,27 @@
 # pull-detached-remote
-Action for [PullDetachedRemote](https://github.com/litetex/PullDetachedRemote)
+Creates a branch with updates from a detached (not actively set) upstream of a repo and a corresponding PullRequest
 
+If you don't understand the quick summary read the following:
+
+## Why?
+This action was mainly created for the following use-case:
+
+You have a GitHub repo that is not directly linked via an [upstream-remote](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/configuring-a-remote-for-a-fork)
+This can be achieved by
+* [duplicating](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/duplicating-a-repository) a repo or
+* [forking](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-forks) a repo and [removing it's upstream remote](https://stackoverflow.com/questions/29326767/unfork-a-github-fork-without-deleting/41486339)
+
+Now you wan't to update this repo from it's "upstream" (which is not actively set / detached). <br/>
+You [can do that manually](https://gist.github.com/CristinaSolana/1885435), but after some time (especially when there are more often commits on the "upstream"), you definetly wan't to do that automated.
+
+An here this action comes into spotlight.
+
+It automatically updates your "detached upstream":<br/>
+Firstly it checks if there are new commits on the upstream.<br/>
+When there are new ones, it creates a new branch and a pull request.
+<br/>
+<br/>
+The action is based on [PullDetachedRemote](https://github.com/litetex/PullDetachedRemote)
 
 ## Usage
 A simple worfklow example:
@@ -24,7 +45,7 @@ jobs:
         run: git fetch --prune --unshallow
       # Pull the detached remote and do the magic
       - name: Pull Detached Remote
-        uses: litetex/pull-detached-remote@vdev
+        uses: litetex/pull-detached-remote@<VERSIONTAG>
         with:
           upstreamrepo: https://github.com/<owner>/<repo>
           upstreambranch: <branchname>
@@ -85,7 +106,8 @@ jobs:
       <br/>
       Only used if:<br/>
       <ul>
-        <li>upstreamcredmode=AUTO (default), the repo is not from GitHub and DETACHED_CREDS_PRINCIPAL is set</li>
+        <li>upstreamcredmode=AUTO (default)<br/>the upstream-repo is not hosted on GitHub and DETACHED_CREDS_PRINCIPAL is set
+        </li>
         <li>upstreamcredmode=CUSTOM</li>
       </ul>
     </td>

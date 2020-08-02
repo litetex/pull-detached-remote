@@ -1,1 +1,1 @@
-FROM litetex/pulldetachedremote:develop
+FROM litetex/pulldetachedremote:master-b20bdf3-20200802-1339
