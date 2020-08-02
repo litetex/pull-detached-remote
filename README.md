@@ -43,7 +43,7 @@ jobs:
         run: git fetch --prune --unshallow
       # Pull the detached remote and do the magic
       - name: Pull Detached Remote
-        uses: litetex/pull-detached-remote@<VERSION>
+        uses: litetex/pull-detached-remote@<VERSIONTAG>
         with:
           upstreamrepo: https://github.com/<owner>/<repo>
           upstreambranch: <branchname>
