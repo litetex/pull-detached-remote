@@ -29,6 +29,9 @@ A simple worfklow example:
 name: Pull detached upstream automatically from https://github.com/<owner>/<repo>
 
 on:
+  # Possibility to run it manually
+  workflow_dispatch:
+  # Automated
   schedule:
     # Run this every day at 02:22 UTC
     - cron: '22 2 * * *'
