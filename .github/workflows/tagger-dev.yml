@@ -38,6 +38,5 @@ jobs:
         commitish: develop
         body: |
           ### Latest develop release
-          Ref: ${{ github.ref }}
         draft: false
         prerelease: true
