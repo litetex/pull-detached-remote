@@ -22,6 +22,12 @@ jobs:
         git tag -d vdev || true
         git push origin :refs/tags/vdev || true
         
+    - name: Remove resulting draft release
+      run: |
+        hub release -f "%T (%S) %n" --include-drafts
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
     - name: Set tag again
       run: |
         git tag vdev
