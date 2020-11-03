@@ -30,7 +30,7 @@ jobs:
     - name: Dategenerator
       id: dategen
       run: |
-       echo "::set-output name=build_datetime::$(date -u +%Y%m%d-%H%M%s)"
+       echo "::set-output name=build_datetime::$(date -u +%Y%m%d-%H%M%S)"
       
     - name: Create Release
       id: create_release
