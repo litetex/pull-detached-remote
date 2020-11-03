@@ -19,14 +19,12 @@ jobs:
 
     - name: Remove existing tag
       run: |
-        git tag -d dev
-        git push origin :refs/tags/dev
-        git tag dev
-        git push origin --tags
+        git tag -d vdev || true
+        git push origin :refs/tags/vdev || true
         
     - name: Set tag again
       run: |
-        git tag dev
+        git tag vdev
         git push origin --tags
       
     - name: Create Release
