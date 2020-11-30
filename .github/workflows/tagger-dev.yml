@@ -1,10 +1,8 @@
 name: Develop Tagger
 
 on:
-  workflow_dispatch:
-  # Blocked by https://github.com/actions/create-release/issues/99
-#  push:
-#    branches: [ develop ]
+  push:
+    branches: [ develop ]
 
 jobs:
   build:
