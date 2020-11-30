@@ -18,38 +18,7 @@ jobs:
         git config --global user.email "actions@github.com"
         git config --global user.name "GitHub Actions"
 
-    - name: Remove release (if any)
+    - name: Move tag
       run: |
-        hub release delete vdev || true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Remove existing tag (if any)
-      run: |
-        git tag -d vdev || true
-        git push origin :refs/tags/vdev || true
-        
-    - name: Set tag again
-      run: |
-        git tag vdev
-        git push origin --tags
-
-    - name: Dategenerator
-      id: dategen
-      run: |
-       echo "::set-output name=build_datetime::$(date -u +%Y%m%d-%H%M%S)"
-      
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: vdev
-        release_name: vdev
-        commitish: develop
-        body: |
-          ### Latest develop release
-          ${{ steps.dategen.outputs.build_datetime }}
-        draft: false
-        prerelease: true
+        git tag -fa vdev -m "Update vdev tag"
+        git push origin vdev --force
