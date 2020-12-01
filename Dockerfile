@@ -1,1 +1,1 @@
-FROM litetex/pulldetachedremote:develop
+FROM litetex/pulldetachedremote:0.2
