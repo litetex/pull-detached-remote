@@ -130,4 +130,4 @@ jobs:
 
 ## Demos
 Here you can find a demo implementations:
-* [avesflower](https://github.com/BaseMC/avesflower)
+* [avesflower](https://github.com/BaseMC/avesflower/blob/develop/.github/workflows/upstream_update.yml)
