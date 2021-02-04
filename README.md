@@ -126,6 +126,22 @@ jobs:
       Password
     </td>
   </tr>
+  
+  <tr><td colspan=4></td></tr>
+  
+  <tr>
+    <td>NO_PR_STATUS</td>
+    <td>Optional</td>
+    <td>Disables the status message in the pull request</td>
+    <td>Valid values: <code>1</code> or <code>true</code></td>
+  </tr>
+  
+  <tr>
+    <td>NO_CREDITS</td>
+    <td>Optional</td>
+    <td>Disables the credits in the pull request</td>
+    <td>Valid values: <code>1</code> or <code>true</code></td>
+  </tr>
 </table>
 
 ## Demos
