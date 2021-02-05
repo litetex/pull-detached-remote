@@ -31,8 +31,11 @@ inputs:
   upstreambranch:
     description: 'Detached remote branch that should be used; WARNING: It is recommend to set this branch, otherwise the process may be inperformant'
     required: false
-  nameoforiginupdatebranch:
+  updatebranch:
     description: 'Name of the branch that will be created in the origin-Repo with the changes from upstream-Repo/upstream-Branch; default is a auto generated name from the upstreamRepo + Branch'
+    required: false
+  ignoreprotocol: 
+    description: 'Ignores the protocol (http/https) when generating the updatebranch name; possible values=1 or true'
     required: false
   upstreamcredmode:
     description: 'Determines which credentials are used for authetification at upstreamrepo (or how they are determined / used); Valid inputs are AUTO (default/if not set), NONE, GITHUB or CUSTOM'
@@ -59,8 +62,10 @@ runs:
   - '${{ inputs.upstreamrepo }}'
   - '--upstreambranch'
   - '${{ inputs.upstreambranch }}'
-  - '--nameoforiginupdatebranch'
-  - '${{ inputs.nameoforiginupdatebranch }}'
+  - '--updatebranch'
+  - '${{ inputs.updatebranch }}'
+  - '--ignoreprotocol'
+  - '${{ inputs.ignoreprotocol }}'
   - '--upstreamcredmode'
   - '${{ inputs.upstreamcredmode }}'
 branding:
